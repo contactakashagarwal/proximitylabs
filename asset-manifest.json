@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/proximitylabs/static/css/main.02f6e997.chunk.css",
+    "main.js": "/proximitylabs/static/js/main.975bddc8.chunk.js",
+    "main.js.map": "/proximitylabs/static/js/main.975bddc8.chunk.js.map",
+    "runtime-main.js": "/proximitylabs/static/js/runtime-main.36e2d137.js",
+    "runtime-main.js.map": "/proximitylabs/static/js/runtime-main.36e2d137.js.map",
+    "static/css/2.800be05e.chunk.css": "/proximitylabs/static/css/2.800be05e.chunk.css",
+    "static/js/2.135d1884.chunk.js": "/proximitylabs/static/js/2.135d1884.chunk.js",
+    "static/js/2.135d1884.chunk.js.map": "/proximitylabs/static/js/2.135d1884.chunk.js.map",
+    "static/js/3.ecdcdf01.chunk.js": "/proximitylabs/static/js/3.ecdcdf01.chunk.js",
+    "static/js/3.ecdcdf01.chunk.js.map": "/proximitylabs/static/js/3.ecdcdf01.chunk.js.map",
+    "index.html": "/proximitylabs/index.html",
+    "static/css/2.800be05e.chunk.css.map": "/proximitylabs/static/css/2.800be05e.chunk.css.map",
+    "static/css/main.02f6e997.chunk.css.map": "/proximitylabs/static/css/main.02f6e997.chunk.css.map",
+    "static/js/2.135d1884.chunk.js.LICENSE.txt": "/proximitylabs/static/js/2.135d1884.chunk.js.LICENSE.txt",
+    "static/media/guide.27a484ad.JPG": "/proximitylabs/static/media/guide.27a484ad.JPG"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.36e2d137.js",
+    "static/css/2.800be05e.chunk.css",
+    "static/js/2.135d1884.chunk.js",
+    "static/css/main.02f6e997.chunk.css",
+    "static/js/main.975bddc8.chunk.js"
+  ]
+}
