@@ -1,23 +1,52 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react'
 import './App.css';
+import { throttle, clone } from 'lodash';
+import CityAqiTable from './components/city-aqi-table/city-aqi-table';
+import CityAqiChart from './components/city-aqi-chart/city-aqi-chart';
 
 function App() {
+
+  const ws = new WebSocket('ws://city-ws.herokuapp.com/')
+  const [citiesData, setCitiesData] = useState([]);
+  const [selectedCityRowData, setSelectedCityRowData] = useState(null);
+
+  useEffect(() => {
+    connect();
+  }, [])
+
+  const connect = () => {
+    ws.onopen = () => {
+      console.log('connected');
+    }
+
+    //throttling the onmessage event and updating only once in 2 seconds
+    ws.onmessage = throttle(evt => {
+      const message = JSON.parse(evt.data);
+      setCitiesData(message)
+    }, 300)
+
+    ws.onclose = () => {
+      console.log('disconnected');
+    }
+  }
+
+  const onRowSelect = (cityData) => {
+    setSelectedCityRowData(clone(cityData));
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <CityAqiTable
+        citiesData={citiesData}
+        selectedCityRowData={selectedCityRowData}
+        onRowSelect={(selectedRowData) => onRowSelect(selectedRowData)} />
+
+      {selectedCityRowData &&
+        <div className="chartContainer">
+          <CityAqiChart cityName={selectedCityRowData.cityName}
+            dataPoints={selectedCityRowData.dataPoints} />
+        </div>
+      }
     </div>
   );
 }

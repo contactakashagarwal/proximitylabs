@@ -1,0 +1,44 @@
+.margin50{
+  margin: 30px !important;
+}
+
+.aqitable{
+    max-height: 400px;
+    overflow-y: scroll;
+    margin: auto;
+}
+
+.guideImgCol {
+  max-width: 27% !important;
+}
+
+.aqi {
+  font-weight: 900;
+  font-family: cursive;
+}
+.good{
+  color:green !important
+}
+.satisfactory{
+  color:rgb(76, 155, 80) !important
+}
+.moderate{
+  color:rgb(229, 233, 5) !important
+}
+.poor{
+  color:rgb(216, 124, 4) !important
+}
+.verypoor{
+  color:rgb(221, 9, 9) !important
+}
+.severe{
+  color:rgb(128, 0, 0) !important
+}
+.chartContainer{
+  margin: 18px;
+  border: 1px solid;
+}
+
+.selected {
+  background-color: aliceblue;
+}
