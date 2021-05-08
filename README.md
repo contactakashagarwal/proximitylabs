@@ -1,6 +1,5 @@
 # Air Quality Index Monitoring App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).\
 This App is deployed using github pages => [Air Quality Index Monitoring](https://contactakashagarwal.github.io/proximitylabs/)
 
 ## Features
