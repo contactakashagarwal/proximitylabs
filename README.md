@@ -29,6 +29,6 @@ Comments have been added in most of the places in code to make intentions explic
 
 - I am using React Library to build this SPA since I am comfortable using it. 
 - For Charts I have used the ReactApexCharts library, since they were simpler to integrate and provide multiple configurable options.
-- For sotring the CITY data I have used Array as Datastructure. We could have used dictionary as well such that fetching city data would have been faster but since it was a very small dataset so it won't matter much.
+- For storing the CITY data I have used Array as Datastructure. We could have used dictionary as well such that fetching city data would have been faster but since it was a very small dataset so it won't matter much.
 - For Each DataSet I am storing the timestamp and AQI value (upto 2 decimal places), and I am maintaining 20 datapoints for each city in local memory.
 - For Last update status I am comparing timestamps and if it is updated withing milliseconds then display message will be "few milliseconds ago" else it will show actual time in seconds.
