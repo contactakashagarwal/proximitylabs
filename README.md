@@ -1,70 +1,35 @@
-# Getting Started with Create React App
+# Air Quality Index Monitoring App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).\
+This App is deployed using github pages => [Air Quality Index Monitoring](https://contactakashagarwal.github.io/proximitylabs/)
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+1. Read realtime **Air Quality Index (AQI)** data for different cities via Web Socket Connection.
+2. Table to show AQI data city wise.
+3. Combining the AQI data recieved as individual ws message response for different cities and storing historical data points upto a certain limit.
+4. Once we click on any city row, a Timeseries chart will be displayed showing time based AQI data. X Axis => Timestamp , YAxis => AQI value
+5. The Chart will also change in realtime and it will keep appending latest data points recieved via web socket.
 
-### `npm start`
+## Approach
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Comments have been added in most of the places in code to make intentions explicit. However below are few points that can be highlighted
+- **Throttling the WebSocket onMessage event** such that we don't we can control the frequency of messages recieved from server.
+- Merging the city data recieved on every call in local memory such that for each city, an array of limited historical AQI data values are maintained. Current limit is set to 20 Data Points
+- Chart will keep on changing in realtime as long as we keep receiving new data from server.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Application Snapshots
+**Starting Page** , Table is loaded based on generated data, Here latest AQI values for each city and their Last Updated Status is shown.
+![image](https://user-images.githubusercontent.com/62435205/117538698-00491480-b025-11eb-830e-c58298ccfe7e.png)
 
-### `npm test`
+**Chart** is Loaded on slecting city
+![image](https://user-images.githubusercontent.com/62435205/117538886-751c4e80-b025-11eb-9272-8ea8d8e890cc.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Technology choice
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- I am using React Library to build this SPA since I am comfortable using it. 
+- For Charts I have used the ReactApexCharts library, since they were simpler to integrate and provide multiple configurable options.
+- For sotring the CITY data I have used Array as Datastructure. We could have used dictionary as well such that fetching city data would have been faster but since it was a very small dataset so it won't matter much.
+- For Each DataSet I am storing the timestamp and AQI value (upto 2 decimal places), and I am maintaining 20 datapoints for each city in local memory.
+- For Last update status I am comparing timestamps and if it is updated withing milliseconds then display message will be "few milliseconds ago" else it will show actual time in seconds.
