@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import ReactApexChart from 'react-apexcharts';
 import { chartOptions } from './chart-config';
+import { clone } from 'lodash';
 
 const CityAqiChart = ({ cityName, dataPoints }) => {
 
@@ -8,19 +9,24 @@ const CityAqiChart = ({ cityName, dataPoints }) => {
   const [options, setOptions] = useState({});
 
   useEffect(() => {
-    regenerateData();
+    generateChartData();
   }, [dataPoints[dataPoints.length - 1]]);
 
-  function regenerateData() {
+  function generateChartData() {
     let seriesData = [];
-    seriesData.push({ name: cityName, data: dataPoints.map(x => x.aqi) });
-    setSeries(seriesData);
-    setOptions(chartOptions(cityName));
+    const timestamps = dataPoints.map(dp => dp.timestamp);
+    const minTimeStamp = Math.min(...timestamps);
+    const op = clone(chartOptions(cityName, minTimeStamp));
+
+    seriesData = dataPoints.map(x => [x.timestamp, x.aqi]);
+    op.series = [{ data: seriesData }];
+    setSeries([{ data: seriesData }]);
+    setOptions(op);
   }
 
   return (
     <div id="chart">
-      <ReactApexChart options={options} series={series} type="area" height={350} />
+      <ReactApexChart series={series} options={options} type="area" height={350} />
     </div>
   );
 }

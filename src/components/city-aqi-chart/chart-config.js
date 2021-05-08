@@ -1,56 +1,120 @@
-export const chartOptions = (cityName) => ({
-    chart: {
-        type: 'area',
-        stacked: false,
-        height: 350,
-        zoom: {
-            type: 'x',
-            enabled: true,
-            autoScaleYaxis: true
+export const chartOptions = (cityName, minTimeStamp) => {
+
+    return {
+        series: [{ data: [] }],
+        chart: {
+            id: 'area-datetime',
+            type: 'area',
+            height: 350,
+            zoom: {
+                autoScaleYaxis: true
+            }
         },
-        toolbar: {
-            autoSelected: 'zoom'
-        }
-    },
-    dataLabels: {
-        enabled: false
-    },
-    markers: {
-        size: 0,
-    },
-    title: {
-        text: `${cityName} Air Quality Index`,
-        align: 'left'
-    },
-    fill: {
-        type: 'gradient',
-        gradient: {
-            shadeIntensity: 1,
-            inverseColors: false,
-            opacityFrom: 0.5,
-            opacityTo: 0,
-            stops: [0, 90, 100]
+        annotations: {
+            yaxis: [
+                {
+                    y: 51,
+                    borderColor: '#999',
+                    label: {
+                        show: true,
+                        text: 'Satisfactory',
+                        style: {
+                            color: "#fff",
+                            background: '#00E396'
+                        }
+                    }
+                },
+                {
+                    y: 101,
+                    borderColor: '#999',
+                    label: {
+                        show: true,
+                        text: 'Moderate',
+                        style: {
+                            color: "#fff",
+                            background: '#00E396'
+                        }
+                    }
+                },
+                {
+                    y: 201,
+                    borderColor: '#999',
+                    label: {
+                        show: true,
+                        text: 'Poor',
+                        style: {
+                            color: "#fff",
+                            background: '#00E396'
+                        }
+                    }
+                },
+                {
+                    y: 301,
+                    borderColor: '#999',
+                    label: {
+                        show: true,
+                        text: 'Very Poor',
+                        style: {
+                            color: "#fff",
+                            background: '#00E396'
+                        }
+                    }
+                },
+                {
+                    y: 401,
+                    borderColor: '#999',
+                    label: {
+                        show: true,
+                        text: 'Severe',
+                        style: {
+                            color: "#fff",
+                            background: '#00E396'
+                        }
+                    }
+                }]
         },
-    },
-    yaxis: {
-        labels: {
-            formatter: function (val) {
-                return val;
-            },
+        dataLabels: {
+            enabled: false
+        },
+        markers: {
+            size: 0,
+            style: 'hollow',
         },
         title: {
-            text: 'Air Quality Index'
+            text: `${cityName} Air Quality Index`,
+            align: 'center'
         },
-    },
-    xaxis: {
-        type: 'datetime',
-    },
-    tooltip: {
-        shared: false,
-        y: {
-            formatter: function (val) {
-                return val
+        xaxis: {
+            type: 'datetime',
+            min: minTimeStamp,
+            tickAmount: 6,
+            labels: {
+                formatter: function (val) {
+                    return new Date(val).toString().slice(0, 24);
+                },
+            },
+            title: {
+                text: 'Timestamp'
             }
-        }
+        },
+        yaxis: {
+            labels: {
+                formatter: function (val) {
+                    return val;
+                },
+            },
+            title: {
+                text: 'Air Quality Index'
+            },
+        },
+        fill: {
+            type: 'gradient',
+            gradient: {
+                shadeIntensity: 1,
+                opacityFrom: 0.7,
+                opacityTo: 0.9,
+                stops: [0, 100]
+            }
+        },
     }
-});
+};
