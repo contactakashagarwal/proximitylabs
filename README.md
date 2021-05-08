@@ -13,7 +13,7 @@ This App is deployed using github pages => [Air Quality Index Monitoring](https:
 ## Approach
 
 Comments have been added in most of the places in code to make intentions explicit. However below are few points that can be highlighted
-- **Throttling the WebSocket onMessage event** such that we don't we can control the frequency of messages recieved from server.
+- **Throttling the WebSocket onMessage event** such that we can control the frequency of messages recieved from server.
 - Merging the city data recieved on every call in local memory such that for each city, an array of limited historical AQI data values are maintained. Current limit is set to 20 Data Points
 - Chart will keep on changing in realtime as long as we keep receiving new data from server.
 
