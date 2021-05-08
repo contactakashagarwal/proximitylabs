@@ -32,3 +32,4 @@ Comments have been added in most of the places in code to make intentions explic
 - For storing the CITY data I have used Array as Datastructure. We could have used dictionary as well such that fetching city data would have been faster but since it was a very small dataset so it won't matter much.
 - For Each DataSet I am storing the timestamp and AQI value (upto 2 decimal places), and I am maintaining 20 datapoints for each city in local memory.
 - For Last update status I am comparing timestamps and if it is updated withing milliseconds then display message will be "few milliseconds ago" else it will show actual time in seconds.
+- I took 6 hours to complete this whole assignment. Reason behind this is I was not much in touch with react lately as I was working on some backend heavy product development. Searching and configuring Chart library took most of that time. Rest in designing the approach, remembering the react stuffs and coding it all. 
