@@ -6,7 +6,7 @@ import CityAqiChart from './components/city-aqi-chart/city-aqi-chart';
 
 function App() {
 
-  const ws = new WebSocket('ws://city-ws.herokuapp.com/')
+  const ws = new WebSocket('wss://city-ws.herokuapp.com/')
   const [citiesData, setCitiesData] = useState([]);
   const [selectedCityRowData, setSelectedCityRowData] = useState(null);
 
